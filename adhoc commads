@@ -1,0 +1,23 @@
+# sudo vim /etc/ansible/hosts
+Add the following two hosts IP address..
+
+[webservers]
+192.168.87.156
+192.168.87.157
+
+
+# ansible -m ping webservers
+# ansible -m ping -all
+# ansible -m command -a "df -h" webservers
+# ansible -m command -a "free -mt" webservers
+# ansible -m shell -a "service httpd status" webservers > service_status.txt
+# ansible -m shell -a "init 0" webservers
+# ansible -m shell -a "/sbin/service ntpd status" devhosts -s -k
+
+
+$ ansible -m shell -a "/sbin/service httpd status" 192.168.1.32 -s
+192.168.1.32 | SUCCESS | rc=0 >>
+httpd (pid  32076) is running...
+
+# ansible-playbook -i inventoryfile playbook.yml -e file_state=touch --start-at-task='Task Name'
+# ansible-playbook -i inventoryfile playbook.yml -e file_state=absent --start-at-task='Task Name'
