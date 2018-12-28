@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  user: aravi
+  tasks:
+    - copy:
+        src: /home/aravi/.ssh/id_rsa.pub
+        dest: /tmp/
+        owner: aravi
