@@ -1,0 +1,15 @@
+---
+- hosts: linuxservers
+  remote_user: aravi
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Insert New line
+      blockinfile:
+        path: /etc/snmp/snmpd.conf
+        insertafter: "rocommunity"
+        content: |
+           rocommunity public 192.168.2.5
+
+    - name: Restart SNMPD Service
+      action: service name=snmpd state=restarted
