@@ -46,14 +46,6 @@
                       count={{count}}
         register: ec2
 
-      - name: Include Newly Created EC2 Instance into ansible inventory file
-        local_action: lineinfile
-                      dest="./inventory"
-                      regexp={{ item.public_ip }}
-                      insertafter="[webserver]" line={{ item.public_ip }}
-        with_items: "{{ ec2.instances }}"
-
-
       - name: Wait for EC2 Instance to Spin-up and ready for SSH access
         local_action: wait_for
                       host={{ item.public_ip }}
