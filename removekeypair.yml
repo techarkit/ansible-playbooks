@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    region: 'us-east-1'
+  tasks:
+    - name: Remove Key Pair
+      local_action: ec2_key
+                region={{ region }}
+                name="sshkeypair"
+                state="absent"
