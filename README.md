@@ -6,5 +6,3 @@ Ansible Palybooks Written and Published by www.server-computer.com. NO WARRANTY 
 - [Create New Key pair and download keys](https://github.com/techtutorials/ansible-palybooks/blob/master/EC2/createnewkeypair.yml)
 - [Delete KeyPair from AWS EC2](https://github.com/techtutorials/ansible-palybooks/blob/master/EC2/removekeypair.yml)
 
--
-
