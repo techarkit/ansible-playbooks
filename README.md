@@ -1,6 +1,8 @@
 # Ansible Playbooks
 Ansible Palybooks Written and Published by www.server-computer.com. NO WARRANTY for any damages and loss of data.
 
+- [Automation with Ansible Course Videos](https://www.youtube.com/watch?v=2_GXHygzWSQ&list=PL8cE5Nxf6M6YUaKyuon-AWRDNr31ANuo2)
+
 - [Ad-Hoc Commands](https://github.com/techtutorials/ansible-palybooks/blob/master/adhoc%20commads)
 - [Copy SSH Key](https://github.com/techtutorials/ansible-palybooks/blob/master/copyssh.yml)
 - [Enable SNMP Community String all the Servers](https://github.com/techtutorials/ansible-palybooks/blob/master/snmpcommunitychange.yaml)
