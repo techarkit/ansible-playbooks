@@ -1,0 +1,12 @@
+---
+- name: Install multiple packages
+  hosts: node2
+  tasks:
+    - name: Install packages
+      yum: name={{item}} state=latest
+      with_items:
+      - make
+      - gcc
+      - httpd
+      - wget
+...
