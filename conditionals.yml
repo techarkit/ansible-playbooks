@@ -1,0 +1,10 @@
+---
+- name: Start and Stop services
+  hosts: servers
+  tasks:
+    - service: name=postgresql state=started
+      when: ansible_host == "node5.techarkit.local"
+
+    - service: name=sshd state=started
+      when: ansible_host == "node2.techarkit.local"
+...
