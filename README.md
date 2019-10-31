@@ -4,8 +4,8 @@ Ansible Palybooks Written and Published by www.server-computer.com. NO WARRANTY 
 - [Automation with Ansible Course Videos](https://www.youtube.com/watch?v=2_GXHygzWSQ&list=PL8cE5Nxf6M6YUaKyuon-AWRDNr31ANuo2)
 
 Ansible Course
-[Class 1:](https://youtu.be/-b1ByalW4X8)
-[Class 2:](https://youtu.be/p8xkv1m-boE)
+-[Class 1:](https://youtu.be/-b1ByalW4X8)
+-[Class 2:](https://youtu.be/p8xkv1m-boE)
 [Class 3:](https://youtu.be/G7_orKIWAeA)
 [Class 4:](https://youtu.be/Kr-62ON416c)
 [Class 5:](https://youtu.be/2nRfP69sGsk)
