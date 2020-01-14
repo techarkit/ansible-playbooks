@@ -1,0 +1,33 @@
+---
+- name: Create New Partition
+  hosts: localhost
+  remote_user: aravi
+  become: yes
+
+  tasks:
+  - name: Create Part1
+    parted:
+      device: /dev/sdc
+      number: 1
+      state: present
+      part_start: 10MiB
+      part_end: 2GiB
+
+  - name: Format device with File System
+    filesystem:
+      fstype: ext4
+      dev: /dev/sdc1
+
+  - name: Create Directory
+    file:
+      path: /mnt/sdc1
+      state: directory
+      mode: '0755'
+
+  - name: Mount Partition
+    mount:
+      path: /mnt/sdc1
+      src: /dev/sdc1
+      fstype: ext4
+      state: mounted
+...      
