@@ -1,0 +1,18 @@
+---
+- name: Writing Web Server
+  hosts: localhost
+  remote_user: aravi
+  become: yes
+
+  tasks:
+  - name: Firewall Rule
+    firewalld:
+      zone: public
+      service: smtp
+      permanent: yes
+      state: enabled
+
+  - name: Reload Firewalld rules
+    service:
+      name: firewalld
+      state: restarted
