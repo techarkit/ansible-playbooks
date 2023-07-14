@@ -8,4 +8,6 @@
         src: /tmp/serverinfo.sh
         dest: /tmp/
         mode: '0755'
+    - name: Execute Remote Script file
+      ansible.builtin.script /tmp/serverinfo.sh
 ...
