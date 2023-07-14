@@ -7,6 +7,6 @@
     - name: Execute Remote Script file
       command: sh /tmp/serverinfo.sh
       register: version
-    - debug:
-      var: version.stdout_lines
+    - name: Copy the file to Master Server
+      command: scp /Inventory/*.txt 192.168.237.129:/Inventory/
 ...
