@@ -8,5 +8,8 @@
       command: sh /tmp/serverinfo.sh
       register: version
     - name: Copy the file to Master Server
-      command: scp /Inventory/*.txt 192.168.237.129:/Inventory/
+      command: mkdir -p /tmp/mount
+      command: mount -t nfs 192.168.237.129:/Inventory/ /tmp/mount
+      command: cp /Inventory/*.txt /tmp/mount
+      command: umount -l /tmp/mount
 ...
