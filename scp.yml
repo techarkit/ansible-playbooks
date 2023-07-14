@@ -1,0 +1,11 @@
+---
+- name: Copy Script file to Remote servers
+  hosts: all
+  tasks:
+    - name: Copy serverinfo Script
+      run_once: yes
+      ansible.builtin.copy:
+        src: /tmp/serverinfo.sh
+        dest: /tmp/
+        mode: '0755'
+...
