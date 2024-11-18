@@ -1,0 +1,59 @@
+---
+- name: Get Next Available IP from Infoblox
+  hosts: localhost
+  gather_facts: no
+  vars:
+    network: "192.168.1.0/23"
+    infoblox_server: "https://infoblox.localdomain.local"
+    infoblox_username: "localadmin"
+    infoblox_password: "password"
+    api_version: "v2.10"
+
+  tasks:
+    - name: Get network reference from Infoblox
+      uri:
+        url: "{{ infoblox_server }}/wapi/{{ api_version }}/network?network={{ network }}&_return_fields=extattrs"
+        method: GET
+        headers:
+          Authorization: "Basic {{ 'localadmin:password' | b64encode }}"
+        return_content: yes
+        validate_certs: no
+      register: network_reference_response
+      failed_when: network_reference_response.json is not defined
+
+    - name: Debug Network Reference response
+      debug:
+        msg: "network_reference.content"
+
+    - name: Parse network reference
+      set_fact:
+        network_ref: "{{ network_reference_response.json[0]._ref }}"
+      when: network_reference_response.json | length > 0
+
+    - name: Fail if network reference is not found
+      fail:
+        msg: "No network reference found for network {{ network }}."
+      when: network_ref is not defined
+
+    - name: Get next available IP from Infoblox
+      uri:
+        url: "{{ infoblox_server }}/wapi/{{ api_version }}/{{ network_ref }}?_function=next_available_ip"
+        method: POST
+        headers:
+          Authorization: "Basic {{ 'localadmin:password' | b64encode }}"
+        body_format: json
+        body:
+          num: 1
+        return_content: yes
+        validate_certs: no
+      register: next_ip_response
+
+    - name: Parse and display the next available IP
+      debug:
+        msg: "Obtained IP address from Infoblox: {{ next_ip_response.json.ips[0] }}"
+      when: next_ip_response.json.ips | length > 0
+
+    - name: Fail if no IP addresses are returned
+      fail:
+        msg: "No IP addresses were returned by Infoblox."
+      when: next_ip_response.json.ips | length == 0
