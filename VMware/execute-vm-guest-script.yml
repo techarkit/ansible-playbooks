@@ -1,0 +1,9 @@
+    - name: Running Windows_Updates powershell script
+      vmware_execute_script:
+        vcenter_ip: "{{ vcenter_hostname }}"
+        vcenter_username: "{{ vcenter_username }}"
+        vcenter_password: "{{ vcenter_password }}"
+        vm_name: "{{ result.next_vm_name }}"
+        guest_username: "{{ vm_username }}"
+        guest_password: "{{ vm_password }}"
+        script_path: "C:\\Scripts\\Windows_Updates.ps1"
