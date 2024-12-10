@@ -1,0 +1,19 @@
+---
+- name: Create an Active Directory User
+  hosts: windows
+  tasks:
+    - name: Ensure the AD user exists
+      ansible.windows.win_domain_user:
+        name: ravia
+        firstname: Ravi
+        display_name: Ravi Kumar
+        lastname: ""
+        surname: ""
+        description: "Global Storage IT Manager"
+        password: "NotARealPassw0d123!"
+        upn: ravia@techarkit.co.in
+        sam_account_name: ravia
+        path: "OU=RDP Accounts,OU=Prod Servers,OU=Shared,OU=Accounts,DC=techarkit,DC=co,DC=in"
+        state: present
+        password_never_expires: false
+        enabled: true
