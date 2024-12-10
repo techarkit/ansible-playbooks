@@ -1,0 +1,6 @@
+vcenter_hostname: "vcentername.techarkit.co.in"
+vcenter_username: "administrator@vsphere.local"
+vcenter_password: "pass"
+vm_username: "administrator"
+vm_password: "pass123"
+vm_name: TEST-VM
